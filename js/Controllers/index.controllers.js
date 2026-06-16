@@ -2,11 +2,11 @@
 let tareas = [];
 
 //Referencias a los elementos de DOM llamándose por ID de HTML
-const txtTarea = document.getElementById(txtTarea);
-const prioridad = document.getElementById(prioridad);
-const btnAgregar = document.getElementById(btnAgregar);
-const listaTareas = document.getElementById(listaTareas);
-const contador = document.getElementById(contador);
+const txtTarea = document.getElementById("txtTarea");
+const prioridad = document.getElementById("prioridad");
+const btnAgregar = document.getElementById("btnAgregar");
+const listaTareas = document.getElementById("listaTareas");
+const contador = document.getElementById("contador");
 
 btnAgregar.addEventListener("click", agregarTarea)
 
@@ -35,6 +35,7 @@ function agregarTarea(){
 
     mostrarTareas();
     limpiarFormulario();
+    contador.innerText=contadorTareas();
 
     Swal.fire({
         icon: "success",
@@ -65,8 +66,9 @@ function mostrarTareas(){
 }
 
 function contadorTareas(){
-    cantidad=tareas.length();
+    cantidad=tareas.length;
     mensaje="Tareas registradas: "+cantidad;
+    return mensaje;
 }
 
 function eliminarTarea(index){
@@ -80,6 +82,7 @@ function eliminarTarea(index){
         text: "La tarea se eliminó correctamente.",
         confirmButtonText: "Aceptar"
     });
+    contador.innerText=contadorTareas();
 }
 
 function limpiarFormulario(){
